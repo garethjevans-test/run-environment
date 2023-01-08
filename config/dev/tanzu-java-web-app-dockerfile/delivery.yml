@@ -28,7 +28,7 @@ spec:
         carto.run/workload-name: tanzu-java-web-app-dockerfile
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/tanzu-java-web-app-dockerfile-dev@sha256:47066b1573c48c7d0f9701d3a68029bcf11d3b9ffbc7c35dfaa9f8076b827bc1
+      - image: gcr.io/ship-interfaces-dev/supply-chain/tanzu-java-web-app-dockerfile-dev@sha256:e083f6d30b9ae520c1afac06406d90e85016cbfa617ef6c185965d03a5da57b4
         name: workload
         resources: {}
         securityContext:
