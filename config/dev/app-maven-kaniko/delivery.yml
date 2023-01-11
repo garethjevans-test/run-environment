@@ -1,16 +1,16 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: tanzu-java-web-app-dockerfile
+  name: app-maven-kaniko
   annotations:
     ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
     ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
   labels:
-    app.kubernetes.io/part-of: test-workload
+    app.kubernetes.io/part-of: app-maven-kaniko
     apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
     app.kubernetes.io/component: run
-    carto.run/workload-name: tanzu-java-web-app-dockerfile
+    carto.run/workload-name: app-maven-kaniko
 spec:
   template:
     metadata:
@@ -22,13 +22,13 @@ spec:
         developer.conventions/target-containers: workload
       labels:
         app.kubernetes.io/component: run
-        app.kubernetes.io/part-of: test-workload
+        app.kubernetes.io/part-of: app-maven-kaniko
         apps.tanzu.vmware.com/has-tests: "true"
         apps.tanzu.vmware.com/workload-type: web
-        carto.run/workload-name: tanzu-java-web-app-dockerfile
+        carto.run/workload-name: app-maven-kaniko
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/tanzu-java-web-app-dockerfile-dev@sha256:e083f6d30b9ae520c1afac06406d90e85016cbfa617ef6c185965d03a5da57b4
+      - image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kaniko-dev@sha256:54f90f8fa79b9faf9d827dc9017d5d8e06417524331998f1ab7de9eeaf198ab6
         name: workload
         resources: {}
         securityContext:
