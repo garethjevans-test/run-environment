@@ -46,7 +46,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kpack-dev@sha256:48f8e06400cb82fb7d284f7f665bfb7a03c79aef58234b8c56781750cb6bbab8
+        image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kpack-dev@sha256:7b7eb0dd50238d68c9a746dc2f8b3f8b1fd571792b3c45345544be602514c624
         livenessProbe:
           httpGet:
             path: /livez
