@@ -44,7 +44,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: ghcr.io/carto-run/app-image@sha256:1302a16c698d5610ca6327396dd6a5ce3f5d24323dba1d281dbd82b08ecdaf93
+        image: ghcr.io/carto-run/app-image@sha256:506130e9113cb107510d13f40a0eb671da9620e3f711953c1c37a34de2588310
         livenessProbe:
           httpGet:
             path: /livez
