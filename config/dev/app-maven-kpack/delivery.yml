@@ -15,7 +15,7 @@ spec:
   template:
     metadata:
       annotations:
-        boot.spring.io/version: 2.7.7
+        boot.spring.io/version: 2.7.8
         conventions.carto.run/applied-conventions: |-
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/spring-boot
@@ -46,7 +46,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kpack-dev@sha256:0ede139035abd9ae075d1012556aab33ca976230590a6ecfb95f662eeda4deb3
+        image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kpack-dev@sha256:fa41531a8014e627fa0e1893516fdc32beb85295e4a6a11840d498a95cfa28af
         livenessProbe:
           httpGet:
             path: /livez
