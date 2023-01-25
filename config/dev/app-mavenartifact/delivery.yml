@@ -5,6 +5,7 @@ metadata:
   annotations:
     ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
     ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
+    kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
   labels:
     app.kubernetes.io/part-of: app-mavenartifact
     apps.tanzu.vmware.com/has-tests: "true"
@@ -46,7 +47,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: gcr.io/ship-interfaces-dev/supply-chain/app-mavenartifact-dev@sha256:d0cabfc9162fe3d442ca82653b3b068af45d1d9f764374d0327d0c2aa44f3075
+        image: gcr.io/ship-interfaces-dev/supply-chain/app-mavenartifact-dev@sha256:d33dbdbfa1fe3037accdcf64090451be9da87db7d0cff4c68540c352df223fdf
         livenessProbe:
           httpGet:
             path: /livez
