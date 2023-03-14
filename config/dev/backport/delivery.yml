@@ -35,5 +35,8 @@ spec:
         resources: {}
         securityContext:
           runAsUser: 1000
+        env:
+        - name: LOG_LEVEL
+          value: "info"  
       serviceAccountName: default
 
