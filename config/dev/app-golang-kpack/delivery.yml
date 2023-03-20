@@ -1,22 +1,21 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: backport
+  name: app-golang-kpack
   annotations:
     ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
     ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
     kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
   labels:
-    app.kubernetes.io/part-of: backport
+    app.kubernetes.io/part-of: app-golang-kpack
     apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
     app.kubernetes.io/component: run
-    carto.run/workload-name: backport
+    carto.run/workload-name: app-golang-kpack
 spec:
   template:
     metadata:
       annotations:
-        autoscaling.knative.dev/min-scale: "1"
         conventions.carto.run/applied-conventions: |-
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
@@ -24,13 +23,13 @@ spec:
         developer.conventions/target-containers: workload
       labels:
         app.kubernetes.io/component: run
-        app.kubernetes.io/part-of: backport
+        app.kubernetes.io/part-of: app-golang-kpack
         apps.tanzu.vmware.com/has-tests: "true"
         apps.tanzu.vmware.com/workload-type: web
-        carto.run/workload-name: backport
+        carto.run/workload-name: app-golang-kpack
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/backport-dev@sha256:a967ae3f9e2578986a7f3fbeda2ced84f3b955e9dd932fabaf0b6f598c654de5
+      - image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kpack-dev@sha256:e0c8b30e57b3ee8ff292d145521efcb2ce17aea7e1fd2fb3b7942436466d0701
         name: workload
         resources: {}
         securityContext:
