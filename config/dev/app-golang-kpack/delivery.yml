@@ -17,6 +17,7 @@ spec:
     metadata:
       annotations:
         conventions.carto.run/applied-conventions: |-
+          appliveview-sample/app-live-view-appflavour-check
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
@@ -28,7 +29,7 @@ spec:
         carto.run/workload-name: app-golang-kpack
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kpack-dev@sha256:c81ad7f2d1b00c1d437e350866c208468f1243139aa44943bed1879dd7b0424c
+      - image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kpack-dev@sha256:ae39d6589de21202864b8812028b28269f4304d29ca21df2e042ec3e3cb7910b
         name: workload
         resources: {}
         securityContext:
