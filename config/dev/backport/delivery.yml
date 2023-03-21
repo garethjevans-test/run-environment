@@ -18,6 +18,7 @@ spec:
       annotations:
         autoscaling.knative.dev/min-scale: "1"
         conventions.carto.run/applied-conventions: |-
+          appliveview-sample/app-live-view-appflavour-check
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
@@ -29,7 +30,7 @@ spec:
         carto.run/workload-name: backport
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/backport-dev@sha256:04e314f7d9c9aa624864ae2c6a7e9376eeba7a0d4d45cfa4724bf1f27bca5211
+      - image: gcr.io/ship-interfaces-dev/supply-chain/backport-dev@sha256:60ae0cc08ea77bae07709938faee45ac9d6749e0b8ee10ddb67b3d198d48b684
         name: workload
         resources: {}
         securityContext:
