@@ -30,7 +30,7 @@ spec:
         carto.run/workload-name: backport
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/backport-dev@sha256:285c070e53dae3d73e9ffbcc9068750c7f76b11657099832416a77634700d076
+      - image: gcr.io/ship-interfaces-dev/supply-chain/backport-dev@sha256:db09682741c37ddbdaad03a81df4bb6959e674e5ab67c7ba64b9ed5997340b56
         name: workload
         resources: {}
         securityContext:
