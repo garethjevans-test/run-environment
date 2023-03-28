@@ -33,7 +33,7 @@ spec:
       - env:
         - name: LOG_LEVEL
           value: info
-        image: gcr.io/ship-interfaces-dev/supply-chain/backport-dev@sha256:aec9c993bb078a7302917a6731adf708767c45e9eb085f561b031bfa534200b6
+        image: gcr.io/ship-interfaces-dev/supply-chain/backport-dev@sha256:642a10ed682b4d90dd74890ccf8a418c1c187531a7770f6ef48de54654b3b1c6
         name: workload
         resources: {}
         securityContext:
