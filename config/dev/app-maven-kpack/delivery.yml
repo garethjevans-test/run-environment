@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        boot.spring.io/version: 2.7.10
+        boot.spring.io/version: 2.7.9
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
           spring-boot-convention/auto-configure-actuators-check
