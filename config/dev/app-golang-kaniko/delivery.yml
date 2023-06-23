@@ -29,7 +29,7 @@ spec:
         carto.run/workload-name: app-golang-kaniko
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kaniko-dev@sha256:b03b319032519fd625a57ea1e85e63ff857baad1e74689496ff2223ae5e7882a
+      - image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kaniko-dev@sha256:63072289b6b044b548d8c3839f56bea86f5490196e4e911c9ec7772954c3bd6d
         name: workload
         resources: {}
         securityContext:
