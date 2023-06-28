@@ -18,11 +18,12 @@ spec:
       annotations:
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
-          simple-convention/garethjevans-readiness
+          simple-convention/garethjevans-probes
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
-        garethjevans.org/readiness: /something
+        garethjevans.org/livenessProbe: '{"exec":{"command":["cat","/tmp/healthy"]},"initialDelaySeconds":5,"periodSeconds":5}'
+        garethjevans.org/readinessProbe: '{"httpGet":{"path":"/healthz","port":8080},"initialDelaySeconds":5,"periodSeconds":5}'
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: app-golang-kpack
@@ -31,10 +32,7 @@ spec:
         carto.run/workload-name: app-golang-kpack
     spec:
       containers:
-      - env:
-        - name: CONVENTION_SERVER
-          value: /something
-        image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kpack-dev@sha256:3830de13d0a844420caa3d0a8d77ee1ca5b05897a273465c682032522fc331b5
+      - image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kpack-dev@sha256:3830de13d0a844420caa3d0a8d77ee1ca5b05897a273465c682032522fc331b5
         name: workload
         resources: {}
         securityContext:
