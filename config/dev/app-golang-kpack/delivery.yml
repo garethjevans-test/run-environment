@@ -18,10 +18,11 @@ spec:
       annotations:
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
-          simple-convention/add-env-var
+          simple-convention/garethjevans-readiness
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
+        garethjevans.org/readiness: /something
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: app-golang-kpack
@@ -32,7 +33,7 @@ spec:
       containers:
       - env:
         - name: CONVENTION_SERVER
-          value: HELLO FROM CONVENTION
+          value: /something
         image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kpack-dev@sha256:3830de13d0a844420caa3d0a8d77ee1ca5b05897a273465c682032522fc331b5
         name: workload
         resources: {}
