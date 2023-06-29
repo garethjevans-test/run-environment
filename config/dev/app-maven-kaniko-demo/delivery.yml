@@ -29,7 +29,7 @@ spec:
         carto.run/workload-name: app-maven-kaniko-demo
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kaniko-demo-dev@sha256:1ba387a25297fb15fa97dbfe395d8e96d03afeb7f8fbe2350f63f83d04648f07
+      - image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kaniko-demo-dev@sha256:18ec32fc9c159296467f86cc5f906613155400f9c4cdb3eca4a20daf99d42e39
         name: workload
         resources: {}
         securityContext:
