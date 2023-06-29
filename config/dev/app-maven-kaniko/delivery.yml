@@ -21,7 +21,6 @@ spec:
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
-        force-build: "1688026503"
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: app-maven-kaniko
@@ -30,7 +29,7 @@ spec:
         carto.run/workload-name: app-maven-kaniko
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kaniko-dev@sha256:82b2c8e3fed1be5ccc7efe24df240128a95e122c57c288837c6c8e6e804ca93b
+      - image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kaniko-dev@sha256:d3eb4c545256492b782cd18c27f5b6927080362a6c3b860f6cdd4c88f8aa6bf5
         name: workload
         resources: {}
         securityContext:
