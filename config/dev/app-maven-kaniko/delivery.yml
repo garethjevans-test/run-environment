@@ -21,6 +21,7 @@ spec:
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
+        force-build: "1688026503"
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: app-maven-kaniko
