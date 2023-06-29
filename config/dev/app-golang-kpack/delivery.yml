@@ -18,8 +18,8 @@ spec:
       annotations:
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
-          simple-convention/garethjevans-readiness-probe
-          simple-convention/garethjevans-liveness-probe
+          simple-convention/garethjevans.org-readiness
+          simple-convention/garethjevans.org-liveness
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
