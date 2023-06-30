@@ -29,7 +29,7 @@ spec:
         carto.run/workload-name: simple-conventions
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/simple-conventions-dev@sha256:a4a1f47101eeec45dceaba1889efc8640dc77f24918ccb296136a2ab43432d99
+      - image: gcr.io/ship-interfaces-dev/supply-chain/simple-conventions-dev@sha256:00c28714a0caf28749aefe039c02b2cfb1afb23ac2bfd0d94d790389c9e21e71
         name: workload
         resources: {}
         securityContext:
