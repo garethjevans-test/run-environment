@@ -29,7 +29,7 @@ spec:
         carto.run/workload-name: app-golang-kaniko-chainguard
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kaniko-chainguard-dev@sha256:569debcfb29dc4ba3cda0950ee688df35632d5ddaabbab4a4abebe9384b20fab
+      - image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kaniko-chainguard-dev@sha256:6661e343403a2a7bb4bcd05d985b0efc46ae61541225832fbcf865cfe30d8d7f
         name: workload
         resources: {}
         securityContext:
