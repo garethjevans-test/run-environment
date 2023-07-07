@@ -17,6 +17,7 @@ spec:
       annotations:
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
+          simple-convention/garethjevans.org-carto-run-workload-name
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
@@ -27,7 +28,10 @@ spec:
         carto.run/workload-name: app-image-dockerfile
     spec:
       containers:
-      - image: ghcr.io/carto-run/app-image-dockerfile@sha256:b85b63252cd35821c4ae0bbf3d3122b2025483a92baef98fc40d48a8dfaa23d8
+      - env:
+        - name: CARTO_RUN_WORKLOAD_NAME
+          value: app-image-dockerfile
+        image: ghcr.io/carto-run/app-image-dockerfile@sha256:b85b63252cd35821c4ae0bbf3d3122b2025483a92baef98fc40d48a8dfaa23d8
         name: workload
         resources: {}
         securityContext:
