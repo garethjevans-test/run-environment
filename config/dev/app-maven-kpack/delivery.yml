@@ -19,6 +19,7 @@ spec:
         boot.spring.io/version: 3.0.5
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
+          simple-convention/garethjevans.org-carto-run-workload-name
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
@@ -45,9 +46,11 @@ spec:
     spec:
       containers:
       - env:
+        - name: CARTO_RUN_WORKLOAD_NAME
+          value: app-maven-kpack
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kpack-dev@sha256:7c550a1180028fec5f2f4a858884f235a897f37761bb9588f5fba67f2f532df0
+        image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kpack-dev@sha256:914d4befa8380c907b377ab98bc0a231560a4ad6f88c7e70e513915e54698b9e
         livenessProbe:
           httpGet:
             path: /livez
