@@ -18,13 +18,9 @@ spec:
       annotations:
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
-          simple-convention/garethjevans.org-readiness
-          simple-convention/garethjevans.org-liveness
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
-        garethjevans.org/livenessProbe: '{"exec":{"command":["cat","/tmp/healthy"]},"initialDelaySeconds":5,"periodSeconds":5}'
-        garethjevans.org/readinessProbe: '{"httpGet":{"path":"/healthz","port":8080},"initialDelaySeconds":5,"periodSeconds":5}'
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: app-golang-kpack
@@ -34,20 +30,7 @@ spec:
     spec:
       containers:
       - image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kpack-dev@sha256:1594131f98b1bbdb2b6bcb4764f3319beda881853d98e4fd6fb73a926595e771
-        livenessProbe:
-          exec:
-            command:
-            - cat
-            - /tmp/healthy
-          initialDelaySeconds: 5
-          periodSeconds: 5
         name: workload
-        readinessProbe:
-          httpGet:
-            path: /healthz
-            port: 8080
-          initialDelaySeconds: 5
-          periodSeconds: 5
         resources: {}
         securityContext:
           runAsUser: 1000
