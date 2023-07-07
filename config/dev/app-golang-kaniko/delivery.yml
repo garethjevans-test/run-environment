@@ -18,6 +18,7 @@ spec:
       annotations:
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
+          simple-convention/garethjevans.org-carto-run-workload-name
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
@@ -29,7 +30,10 @@ spec:
         carto.run/workload-name: app-golang-kaniko
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kaniko-dev@sha256:807d2d26fcb85887296abba41f2273f13dd80aa29a68f6b5dd08de524830b18e
+      - env:
+        - name: CARTO_RUN_WORKLOAD_NAME
+          value: app-golang-kaniko
+        image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kaniko-dev@sha256:807d2d26fcb85887296abba41f2273f13dd80aa29a68f6b5dd08de524830b18e
         name: workload
         resources: {}
         securityContext:
