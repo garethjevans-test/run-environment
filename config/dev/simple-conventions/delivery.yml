@@ -33,7 +33,7 @@ spec:
       - env:
         - name: CARTO_RUN_WORKLOAD_NAME
           value: simple-conventions
-        image: gcr.io/ship-interfaces-dev/supply-chain/simple-conventions-dev@sha256:149c71f313f1aa9b6cb89a0bc6dd38a904e7e4debd982dee987665492d712fc9
+        image: gcr.io/ship-interfaces-dev/supply-chain/simple-conventions-dev@sha256:34c80b42594aa585abb37559e30bce4ecb50d1dcc547376067d0362fe2445d47
         name: workload
         resources: {}
         securityContext:
