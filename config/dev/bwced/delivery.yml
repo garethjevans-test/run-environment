@@ -20,10 +20,12 @@ spec:
           appliveview-sample/app-live-view-appflavour-check
           simple-convention/garethjevans.org-carto-run-workload-name
           simple-convention/garethjevans.org-args
+          simple-convention/garethjevans.org-storage
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
         garethjevans.org/args: '["run","--bind-address","0.0.0.0","--document-root","/storage"]'
+        garethjevans.org/storage: '{"volumeMounts":[{"mountPath":"/storage","name":"storage"}],"volumes":[{"name":"storage","emptyDir":{}}]}'
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: bwced
@@ -46,5 +48,11 @@ spec:
         resources: {}
         securityContext:
           runAsUser: 1000
+        volumeMounts:
+        - mountPath: /storage
+          name: storage
       serviceAccountName: default
+      volumes:
+      - emptyDir: {}
+        name: storage
 
