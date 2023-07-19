@@ -1,16 +1,17 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: app-image-dockerfile
+  name: bwced
   annotations:
     ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
     ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
     kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
   labels:
-    app.kubernetes.io/part-of: app-image-dockerfile
+    app.kubernetes.io/part-of: bwced
+    apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
     app.kubernetes.io/component: run
-    carto.run/workload-name: app-image-dockerfile
+    carto.run/workload-name: bwced
 spec:
   template:
     metadata:
@@ -18,23 +19,40 @@ spec:
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
           simple-convention/garethjevans.org-carto-run-workload-name
+          simple-convention/garethjevans.org-args
+          simple-convention/garethjevans.org-storage
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
+        garethjevans.org/args: '["run","--bind-address","0.0.0.0","--document-root","/storage"]'
+        garethjevans.org/storage: '{"volumeMounts":[{"mountPath":"/storage","name":"storage"}],"volumes":[{"name":"storage","emptyDir":{}}]}'
       labels:
         app.kubernetes.io/component: run
-        app.kubernetes.io/part-of: app-image-dockerfile
+        app.kubernetes.io/part-of: bwced
+        apps.tanzu.vmware.com/has-tests: "true"
         apps.tanzu.vmware.com/workload-type: web
-        carto.run/workload-name: app-image-dockerfile
+        carto.run/workload-name: bwced
     spec:
       containers:
-      - env:
+      - args:
+        - run
+        - --bind-address
+        - 0.0.0.0
+        - --document-root
+        - /storage
+        env:
         - name: CARTO_RUN_WORKLOAD_NAME
-          value: app-image-dockerfile
-        image: ghcr.io/carto-run/app-image-dockerfile@sha256:b85b63252cd35821c4ae0bbf3d3122b2025483a92baef98fc40d48a8dfaa23d8
+          value: bwced
+        image: gcr.io/ship-interfaces-dev/supply-chain/bwced-dev@sha256:f521cd42411fe76e86e1f190c413b528846dba0dd5724d602a2f8956ae2b397d
         name: workload
         resources: {}
         securityContext:
           runAsUser: 1000
+        volumeMounts:
+        - mountPath: /storage
+          name: storage
       serviceAccountName: default
+      volumes:
+      - emptyDir: {}
+        name: storage
 
