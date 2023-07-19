@@ -19,9 +19,11 @@ spec:
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
           simple-convention/garethjevans.org-carto-run-workload-name
+          simple-convention/garethjevans.org-args
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
+        garethjevans.org/args: '["run","--bind-address","0.0.0.0"]'
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: bwced
@@ -30,7 +32,11 @@ spec:
         carto.run/workload-name: bwced
     spec:
       containers:
-      - env:
+      - args:
+        - run
+        - --bind-address
+        - 0.0.0.0
+        env:
         - name: CARTO_RUN_WORKLOAD_NAME
           value: bwced
         image: gcr.io/ship-interfaces-dev/supply-chain/bwced-dev@sha256:21b68e4dc37dcdfa64b4474c3babac8274959d3a81952b94f38bcba41e115c7f
