@@ -23,7 +23,7 @@ spec:
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
-        garethjevans.org/args: '["run","--bind-address","0.0.0.0"]'
+        garethjevans.org/args: '["run","--bind-address","0.0.0.0","--document-root","/storage"]'
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: bwced
@@ -36,6 +36,8 @@ spec:
         - run
         - --bind-address
         - 0.0.0.0
+        - --document-root
+        - /storage
         env:
         - name: CARTO_RUN_WORKLOAD_NAME
           value: bwced
