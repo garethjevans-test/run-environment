@@ -50,7 +50,7 @@ spec:
           value: app-mavenartifact
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: gcr.io/ship-interfaces-dev/supply-chain/app-mavenartifact-dev@sha256:410db03579339b72474a8eb194337604a77f3a698d3237fe26b6f0e9f765348e
+        image: gcr.io/ship-interfaces-dev/supply-chain/app-mavenartifact-dev@sha256:b9d56c88bf4ea9cddbfad4ad9358581d0d7674e4dd7fc997818647385d5bc274
         livenessProbe:
           httpGet:
             path: /livez
