@@ -16,9 +16,9 @@ spec:
   template:
     metadata:
       annotations:
+        apps.tanzu.vmware.com/correlationid: https://github.com/carto-run/app-maven-kaniko?sub_path=/
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
-          simple-convention/garethjevans.org-carto-run-workload-name
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
@@ -30,10 +30,7 @@ spec:
         carto.run/workload-name: app-maven-kaniko
     spec:
       containers:
-      - env:
-        - name: CARTO_RUN_WORKLOAD_NAME
-          value: app-maven-kaniko
-        image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kaniko-dev@sha256:da72dc91f6fef577c184817028a55b1bd1312f05197d94be56350874a177254a
+      - image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kaniko-dev@sha256:f661ddf9bed2b72bc45ad18f9cf0e055f7c2a249056628e8889916b6656e92fb
         name: workload
         resources: {}
         securityContext:
