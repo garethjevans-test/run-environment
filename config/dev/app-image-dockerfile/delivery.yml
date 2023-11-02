@@ -31,7 +31,7 @@ spec:
       - env:
         - name: CARTO_RUN_WORKLOAD_NAME
           value: app-image-dockerfile
-        image: ghcr.io/carto-run/app-image-dockerfile@sha256:b85b63252cd35821c4ae0bbf3d3122b2025483a92baef98fc40d48a8dfaa23d8
+        image: ghcr.io/carto-run/app-image-dockerfile@sha256:51a542e14855e45f422a35f6d1db1d2a7596db04d89483520ce4cf19699dd73f
         name: workload
         resources: {}
         securityContext:

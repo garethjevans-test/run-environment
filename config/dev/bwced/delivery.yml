@@ -43,7 +43,7 @@ spec:
         env:
         - name: CARTO_RUN_WORKLOAD_NAME
           value: bwced
-        image: gcr.io/ship-interfaces-dev/supply-chain/bwced-dev@sha256:f521cd42411fe76e86e1f190c413b528846dba0dd5724d602a2f8956ae2b397d
+        image: gcr.io/ship-interfaces-dev/supply-chain/bwced-dev@sha256:346c53cde224db2f0875cc0015b87bf93b23914d57e34b3888822a731b311088
         name: workload
         resources: {}
         securityContext:

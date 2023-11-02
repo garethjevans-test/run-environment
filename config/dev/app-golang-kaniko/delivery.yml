@@ -33,7 +33,7 @@ spec:
       - env:
         - name: CARTO_RUN_WORKLOAD_NAME
           value: app-golang-kaniko
-        image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kaniko-dev@sha256:17bae4129339c4390c6f069fdb336a03815ce9f026c4786a9d2b3657abcbb515
+        image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kaniko-dev@sha256:f49554c564a0d048cb3578e498ee37bde7f0c0d18e25043c21e21963201bade1
         name: workload
         resources: {}
         securityContext:

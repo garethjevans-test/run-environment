@@ -1,25 +1,25 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: app-mavenartifact
+  name: app-maven-kpack-with-subpath
   annotations:
     ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
     ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
     kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
   labels:
-    app.kubernetes.io/part-of: app-mavenartifact
+    app.kubernetes.io/part-of: app-maven-kpack-with-subpath
     apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
     app.kubernetes.io/component: run
-    carto.run/workload-name: app-mavenartifact
+    carto.run/workload-name: app-maven-kpack-with-subpath
 spec:
   template:
     metadata:
       annotations:
-        boot.spring.io/version: 2.7.10
+        apps.tanzu.vmware.com/correlationid: https://github.com/carto-run/app-maven-kpack-with-subpath?sub_path=my-subpath
+        boot.spring.io/version: 3.0.5
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
-          simple-convention/garethjevans.org-carto-run-workload-name
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
@@ -32,25 +32,23 @@ spec:
         developer.conventions/target-containers: workload
       labels:
         app.kubernetes.io/component: run
-        app.kubernetes.io/part-of: app-mavenartifact
+        app.kubernetes.io/part-of: app-maven-kpack-with-subpath
         apps.tanzu.vmware.com/auto-configure-actuators: "false"
         apps.tanzu.vmware.com/has-tests: "true"
         apps.tanzu.vmware.com/workload-type: web
-        carto.run/workload-name: app-mavenartifact
+        carto.run/workload-name: app-maven-kpack-with-subpath
         conventions.carto.run/framework: spring-boot
         tanzu.app.live.view: "true"
         tanzu.app.live.view.application.actuator.path: actuator
         tanzu.app.live.view.application.actuator.port: "8080"
         tanzu.app.live.view.application.flavours: spring-boot
-        tanzu.app.live.view.application.name: app-mavenartifact
+        tanzu.app.live.view.application.name: app-maven-kpack-with-subpath
     spec:
       containers:
       - env:
-        - name: CARTO_RUN_WORKLOAD_NAME
-          value: app-mavenartifact
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: gcr.io/ship-interfaces-dev/supply-chain/app-mavenartifact-dev@sha256:b9d56c88bf4ea9cddbfad4ad9358581d0d7674e4dd7fc997818647385d5bc274
+        image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kpack-with-subpath-dev@sha256:ad8780ed75529b7de477a2b8c39384803e66858f103151d0f4a3e997951b970e
         livenessProbe:
           httpGet:
             path: /livez
@@ -68,5 +66,10 @@ spec:
         resources: {}
         securityContext:
           runAsUser: 1000
+        startupProbe:
+          httpGet:
+            path: /readyz
+            port: 8080
+            scheme: HTTP
       serviceAccountName: default
 
