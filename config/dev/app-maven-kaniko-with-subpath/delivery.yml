@@ -30,7 +30,7 @@ spec:
         carto.run/workload-name: app-maven-kaniko-with-subpath
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kaniko-with-subpath-dev@sha256:f2549837d63d731716afd4a888ebcc1367d07c42c2205a3638c21e47af3c3f88
+      - image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kaniko-with-subpath-dev@sha256:d08e489bbe707c617bbfa25dc692288554d117375eab7f0884e58213d87f8e15
         name: workload
         resources: {}
         securityContext:
