@@ -16,10 +16,10 @@ spec:
   template:
     metadata:
       annotations:
-        apps.tanzu.vmware.com/correlationid: https://github.com/carto-run/app-maven-kpack?sub_path=/
         boot.spring.io/version: 3.0.5
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
+          simple-convention/garethjevans.org-carto-run-workload-name
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
@@ -46,9 +46,11 @@ spec:
     spec:
       containers:
       - env:
+        - name: CARTO_RUN_WORKLOAD_NAME
+          value: app-maven-kpack
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kpack-dev@sha256:bdf2b1598928c8f172d412f5dc9d502831426c076425aec815f4bb2323090581
+        image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kpack-dev@sha256:8c80a979566a4c814564f47b44ff4d63534d4e14cba75194737ef57a078a4af8
         livenessProbe:
           httpGet:
             path: /livez
@@ -66,10 +68,5 @@ spec:
         resources: {}
         securityContext:
           runAsUser: 1000
-        startupProbe:
-          httpGet:
-            path: /readyz
-            port: 8080
-            scheme: HTTP
       serviceAccountName: default
 
