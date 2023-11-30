@@ -1,46 +1,42 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: app-maven-kaniko-with-subpath
+  name: app-golang-kaniko-chainguard
   annotations:
     ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
     ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
     kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
   labels:
-    app.kubernetes.io/part-of: app-maven-kaniko-with-subpath
+    app.kubernetes.io/part-of: app-golang-kaniko-chainguard
     apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
     app.kubernetes.io/component: run
-    carto.run/workload-name: app-maven-kaniko-with-subpath
+    carto.run/workload-name: app-golang-kaniko-chainguard
 spec:
   template:
     metadata:
       annotations:
-        apps.tanzu.vmware.com/correlationid: https://github.com/carto-run/app-maven-kaniko-with-subpath?sub_path=my-subpath
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
+          simple-convention/garethjevans.org-carto-run-workload-name
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
       labels:
         app.kubernetes.io/component: run
-        app.kubernetes.io/part-of: app-maven-kaniko-with-subpath
+        app.kubernetes.io/part-of: app-golang-kaniko-chainguard
         apps.tanzu.vmware.com/has-tests: "true"
         apps.tanzu.vmware.com/workload-type: web
-        carto.run/workload-name: app-maven-kaniko-with-subpath
+        carto.run/workload-name: app-golang-kaniko-chainguard
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kaniko-with-subpath-dev@sha256:d08e489bbe707c617bbfa25dc692288554d117375eab7f0884e58213d87f8e15
+      - env:
+        - name: CARTO_RUN_WORKLOAD_NAME
+          value: app-golang-kaniko-chainguard
+        image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kaniko-chainguard-dev@sha256:b6e336cb4f7f98f5809d8f3c14509a04ffd00c33d79a99b1befa69c05966badc
         name: workload
         resources: {}
         securityContext:
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-            - ALL
-          runAsNonRoot: true
           runAsUser: 1000
-          seccompProfile:
-            type: RuntimeDefault
       serviceAccountName: default
 

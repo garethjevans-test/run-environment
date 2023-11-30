@@ -16,10 +16,11 @@ spec:
   template:
     metadata:
       annotations:
+        apps.tanzu.vmware.com/correlationid: https://github.com/carto-run/app-golang-kpack?sub_path=/
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
-          simple-convention/garethjevans.org-carto-run-workload-name
           spring-boot-convention/auto-configure-actuators-check
+          spring-boot-convention/is-native-app-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
       labels:
@@ -30,13 +31,17 @@ spec:
         carto.run/workload-name: app-golang-kpack
     spec:
       containers:
-      - env:
-        - name: CARTO_RUN_WORKLOAD_NAME
-          value: app-golang-kpack
-        image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kpack-dev@sha256:1268fa25b88162a4ebe625f488808162b75725b385017a31c225a0eb74dfb209
+      - image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kpack-dev@sha256:f374d974a479e4fbea9fe58fbcdbca89240a57baaf4053d8771879112045a16d
         name: workload
         resources: {}
         securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
           runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
       serviceAccountName: default
 
