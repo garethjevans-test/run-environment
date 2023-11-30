@@ -48,7 +48,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kpack-with-subpath-dev@sha256:ad8780ed75529b7de477a2b8c39384803e66858f103151d0f4a3e997951b970e
+        image: gcr.io/ship-interfaces-dev/supply-chain/app-maven-kpack-with-subpath-dev@sha256:7510d4ea0b144ac2c5493321b3ff42b94c618913789caebbc2bacdeb8c106331
         livenessProbe:
           httpGet:
             path: /livez
@@ -65,7 +65,14 @@ spec:
             scheme: HTTP
         resources: {}
         securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
           runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
         startupProbe:
           httpGet:
             path: /readyz
