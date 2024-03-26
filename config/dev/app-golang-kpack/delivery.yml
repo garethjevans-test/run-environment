@@ -18,7 +18,6 @@ spec:
       annotations:
         apps.tanzu.vmware.com/correlationid: https://github.com/carto-run/app-golang-kpack?sub_path=/
         conventions.carto.run/applied-conventions: |-
-          appliveview-sample/app-live-view-appflavour-check
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/is-native-app-check
           spring-boot-convention/app-live-view-appflavour-check
@@ -31,7 +30,7 @@ spec:
         carto.run/workload-name: app-golang-kpack
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kpack-dev@sha256:f374d974a479e4fbea9fe58fbcdbca89240a57baaf4053d8771879112045a16d
+      - image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kpack-dev@sha256:797b3b01dbd363cf85e1869299099a47f2f2c3307f6829b9fa404430a4cfdf7a
         name: workload
         resources: {}
         securityContext:
