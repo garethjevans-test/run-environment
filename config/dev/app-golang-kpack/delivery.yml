@@ -30,7 +30,7 @@ spec:
         carto.run/workload-name: app-golang-kpack
     spec:
       containers:
-      - image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kpack-dev@sha256:a35580a1fa18f831499cd2ad364c9cd696bcdbea1ec8e25b0fd3a482f8eacd39
+      - image: gcr.io/ship-interfaces-dev/supply-chain/app-golang-kpack-dev@sha256:797b3b01dbd363cf85e1869299099a47f2f2c3307f6829b9fa404430a4cfdf7a
         name: workload
         resources: {}
         securityContext:
